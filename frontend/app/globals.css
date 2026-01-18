@@ -1,0 +1,111 @@
+/* frontend/app/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* Background */
+  --bg-main: #f0f4f8;
+  --bg-card: #ffffff;
+
+  /* Gradients */
+  --gradient-warm: linear-gradient(135deg, #fec8a0 0%, #f8a4b8 50%, #e8b4d0 100%);
+  --gradient-cool: linear-gradient(135deg, #a8d4e6 0%, #b8c4e8 50%, #c8d0f0 100%);
+  --gradient-warm-soft: linear-gradient(135deg, #fff5f0 0%, #fff0f5 100%);
+  --gradient-cool-soft: linear-gradient(135deg, #f0f7ff 0%, #f5f0ff 100%);
+
+  /* Accents */
+  --accent-coral: #f87171;
+  --accent-blue: #3b82f6;
+  --accent-purple: #8b5cf6;
+
+  /* Text */
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --text-muted: #94a3b8;
+
+  /* Risk */
+  --risk-high: #f87171;
+  --risk-medium: #fbbf24;
+  --risk-low: #34d399;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+}
+
+/* Card Styles */
+@layer components {
+  .card-base {
+    @apply bg-white rounded-3xl p-6 shadow-sm border border-gray-100;
+  }
+
+  .card-gradient-warm {
+    background: var(--gradient-warm);
+    @apply rounded-3xl p-6 text-white;
+  }
+
+  .card-gradient-cool {
+    background: var(--gradient-cool);
+    @apply rounded-3xl p-6;
+  }
+
+  .card-hover {
+    @apply transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+  }
+
+  /* Progress bar styles */
+  .progress-bar {
+    @apply h-2 rounded-full bg-gray-100 overflow-hidden;
+  }
+
+  .progress-fill-blue {
+    @apply h-full rounded-full bg-gradient-to-r from-blue-400 to-blue-600;
+  }
+
+  .progress-fill-coral {
+    @apply h-full rounded-full bg-gradient-to-r from-orange-300 to-red-400;
+  }
+
+  /* Icon container */
+  .icon-container {
+    @apply w-10 h-10 rounded-xl flex items-center justify-center;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Custom Range Slider */
+input[type="range"] {
+  @apply w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  @apply appearance-none w-5 h-5 bg-purple-600 rounded-full cursor-pointer shadow-lg;
+}
+
+input[type="range"]::-moz-range-thumb {
+  @apply w-5 h-5 bg-purple-600 rounded-full cursor-pointer shadow-lg border-0;
+}

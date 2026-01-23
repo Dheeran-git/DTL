@@ -100,8 +100,8 @@ export default function Hero() {
                 <div className="flex items-start justify-between">
                   <div>
                     <p className="text-white/80 text-sm font-medium mb-1">ML Prediction</p>
-                    <p className="text-white text-2xl font-bold">Random Forest</p>
-                    <p className="text-white/70 text-sm mt-2">Grid Search Optimized</p>
+                    <p className="text-white text-2xl font-bold">Gradient Boosting</p>
+                    <p className="text-white/70 text-sm mt-2">87.8% Accuracy, 0.9211 AUC-ROC</p>
                   </div>
                   <div className="w-12 h-12 rounded-2xl bg-white/20 flex items-center justify-center">
                     <Brain className="w-6 h-6 text-white" />

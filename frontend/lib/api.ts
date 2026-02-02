@@ -19,7 +19,7 @@ export interface PredictionResponse {
     urgency: string;
     contact?: string;
   }>;
-  model_confidence: number;
+  prediction_confidence: number;
 }
 
 export async function predictDropoutRisk(formData: any): Promise<PredictionResponse> {
@@ -30,17 +30,32 @@ export async function predictDropoutRisk(formData: any): Promise<PredictionRespo
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
+        // Consent
+        consent_given: formData.consentGiven,
+        consent_data_processing: formData.consentDataProcessing,
+        consent_anonymous_analytics: formData.consentAnonymousAnalytics,
+        
+        // Academic
         academic_year: formData.academicYear,
         attendance: formData.attendance,
         overwhelm_frequency: formData.overwhelmFrequency,
         study_hours: formData.studyHours,
         performance_satisfaction: formData.performanceSatisfaction,
+        
+        // Support
         advisor_interaction: formData.advisorInteraction,
         support_network_strength: formData.supportNetworkStrength,
+        extracurricular_hours: formData.extracurricularHours,
+        
+        // Personal
         employment_status: formData.employmentStatus,
         financial_stress: formData.financialStress,
         career_alignment: formData.careerAlignment,
+        
+        // Services
+        services_used: formData.servicesUsed,
         withdrawal_considered: formData.withdrawalConsidered,
+        withdrawal_reasons: formData.withdrawalReasons,
       }),
     });
 
@@ -101,7 +116,7 @@ function fallbackPrediction(formData: any): PredictionResponse {
         urgency: 'when-needed'
       }
     ],
-    model_confidence: 0.7
+    prediction_confidence: 0.7
   };
 }
 

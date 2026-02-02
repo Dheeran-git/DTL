@@ -49,7 +49,7 @@ export default function Footer() {
             © 2024 Design Thinking Lab Project - RV College of Engineering
           </p>
           <p className="text-gray-400 text-sm mt-2 md:mt-0">
-            Built with Next.js, FastAPI & Random Forest ML
+            Built with Next.js, FastAPI & Gradient Boosting ML
           </p>
         </div>
       </div>

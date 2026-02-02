@@ -20,12 +20,12 @@ export default function AboutPage() {
     { phase: 'Empathize', icon: Heart, description: 'Conducted surveys with 45+ students, identified pain points through interviews and empathy maps' },
     { phase: 'Define', icon: Target, description: 'Created POV statement: Students need early personalized intervention because current systems act too late' },
     { phase: 'Ideate', icon: Lightbulb, description: 'Used Brainstorming, SCAMPER, Worst Possible Idea techniques to generate solutions' },
-    { phase: 'Prototype', icon: Rocket, description: 'Built ML model with 85% accuracy and web dashboard for risk assessment' },
+    { phase: 'Prototype', icon: Rocket, description: 'Built ML model with 87.8% accuracy and web dashboard for risk assessment' },
     { phase: 'Test', icon: CheckCircle, description: 'Validated with sample data, iterating based on feedback' },
   ];
 
   const currentFeatures = [
-    'ML-based dropout risk prediction using Random Forest (85% accuracy, 0.89 AUC-ROC)',
+    'ML-based dropout risk prediction using Gradient Boosting (87.8% accuracy, 0.9211 AUC-ROC)',
     'Multi-factor assessment covering academic, mental, and financial indicators',
     'Personalized support recommendations with urgency levels',
     'Admin analytics dashboard with trend visualization',
@@ -157,7 +157,7 @@ export default function AboutPage() {
                 <h3 className="font-semibold text-gray-900 mb-3">Backend & ML</h3>
                 <ul className="space-y-2 text-gray-600">
                   <li>• FastAPI (Python)</li>
-                  <li>• scikit-learn Random Forest</li>
+                  <li>• scikit-learn Gradient Boosting</li>
                   <li>• Grid Search optimization</li>
                   <li>• 5-fold cross-validation</li>
                   <li>• Kaggle dataset (4,424 students)</li>

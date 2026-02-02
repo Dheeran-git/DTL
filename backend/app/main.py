@@ -29,7 +29,20 @@ app.include_router(prediction.router, prefix=settings.api_prefix)
 async def startup_event():
     """Load ML model on startup"""
     print(f"Starting {settings.app_name} v{settings.version}")
-    # Try to load the model (optional - will use fallback if not available)
+    # Archive known legacy model files (do not delete them)
+    # Note: Do NOT include the currently active model paths here
+    legacy_paths = [
+        "ml/Model_Random_Forest.pkl",
+        "ml/scaler_rf.pkl",
+        "models/Model_Gradient_Boosting.pkl",
+        "models/scaler.pkl",
+    ]
+    try:
+        ml_model.archive_legacy_files(legacy_paths)
+    except Exception as e:
+        print(f"Archiving legacy models failed: {e}")
+
+    # Try to load the active model (will use fallback if not available)
     ml_model.load_model(settings.model_path, settings.scaler_path)
 
 @app.get("/")

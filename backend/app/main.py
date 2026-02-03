@@ -4,8 +4,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from app.config import settings
 from app.models.schemas import HealthResponse
 from app.models.ml_model import ml_model
-from app.database import init_db
+from app.database import init_db, SessionLocal
 from app.routers import prediction, admin
+from app.seed_data import seed_demo_data
 
 # Initialize FastAPI app
 app = FastAPI(
@@ -18,7 +19,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.allowed_origins,
-    allow_credentials=True,
+    allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],
 )
@@ -32,10 +33,12 @@ async def startup_event():
     """Load ML model and initialize database on startup"""
     print(f"Starting {settings.app_name} v{settings.version}")
 
-    # Initialize database
+    # Initialize database and seed demo data
     try:
         await init_db()
         print("[OK] Database initialized successfully")
+        async with SessionLocal() as db:
+            await seed_demo_data(db)
     except Exception as e:
         print(f"[ERROR] Database initialization failed: {e}")
 

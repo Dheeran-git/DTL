@@ -18,11 +18,9 @@ class Settings(BaseSettings):
     # Database settings
     database_url: str = "sqlite+aiosqlite:///./database.db"
 
-    # CORS settings
-    allowed_origins: list = [
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-    ]
+    # CORS settings - allow all origins for deployed environments
+    # In production, restrict to your actual Vercel domain
+    allowed_origins: list = ["*"]
 
     class Config:
         env_file = ".env"
